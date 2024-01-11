@@ -38,7 +38,8 @@ Reply "TERMINATE" in the end when everything is done.
         max_consecutive_auto_reply: Optional[int] = None,
         human_input_mode: Optional[str] = "NEVER",
         code_execution_config: Optional[Union[Dict, Literal[False]]] = False,
-        description: Optional[str] = None,
+        socket=None,
+        sid=None,
         **kwargs,
     ):
         """
@@ -66,7 +67,8 @@ Reply "TERMINATE" in the end when everything is done.
             human_input_mode,
             code_execution_config=code_execution_config,
             llm_config=llm_config,
-            description=description,
+            socket=socket,
+            sid=sid,
             **kwargs,
         )
 
