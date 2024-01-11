@@ -34,7 +34,8 @@ class UserProxyAgent(ConversableAgent):
         default_auto_reply: Optional[Union[str, Dict, None]] = "",
         llm_config: Optional[Union[Dict, Literal[False]]] = False,
         system_message: Optional[Union[str, List]] = "",
-        description: Optional[str] = None,
+        socket=None,
+        sid=None,
     ):
         """
         Args:
@@ -81,16 +82,15 @@ class UserProxyAgent(ConversableAgent):
                 (e.g. the GroupChatManager) to decide when to call upon this agent. (Default: system_message)
         """
         super().__init__(
-            name=name,
-            system_message=system_message,
-            is_termination_msg=is_termination_msg,
-            max_consecutive_auto_reply=max_consecutive_auto_reply,
-            human_input_mode=human_input_mode,
-            function_map=function_map,
-            code_execution_config=code_execution_config,
-            llm_config=llm_config,
-            default_auto_reply=default_auto_reply,
-            description=description
-            if description is not None
-            else self.DEFAULT_USER_PROXY_AGENT_DESCRIPTIONS[human_input_mode],
+            name,
+            system_message,
+            is_termination_msg,
+            max_consecutive_auto_reply,
+            human_input_mode,
+            function_map,
+            code_execution_config,
+            llm_config,
+            default_auto_reply,
+            socket,
+            sid,
         )
