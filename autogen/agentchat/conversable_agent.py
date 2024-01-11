@@ -6,7 +6,7 @@ from collections import defaultdict
 from typing import Any, Callable, Dict, List, Literal, Optional, Tuple, Type, Union
 import re
 
-from .. import OpenAIWrapper
+from ..oai import OpenAIWrapper
 from ..code_utils import DEFAULT_MODEL, UNKNOWN, content_str, execute_code, extract_code, infer_lang
 from ..function_utils import get_function_schema, load_basemodels_if_needed, serialize_to_str
 from .agent import Agent
