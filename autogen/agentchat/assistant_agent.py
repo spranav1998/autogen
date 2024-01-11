@@ -40,6 +40,7 @@ Reply "TERMINATE" in the end when everything is done.
         code_execution_config: Optional[Union[Dict, Literal[False]]] = False,
         socket=None,
         sid=None,
+        description: Optional[str] = None,
         **kwargs,
     ):
         """
