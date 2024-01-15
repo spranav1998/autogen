@@ -6,11 +6,10 @@ from collections import defaultdict
 from typing import Any, Callable, Dict, List, Literal, Optional, Tuple, Type, Union
 import re
 
-from ..oai import OpenAIWrapper
-from ..code_utils import DEFAULT_MODEL, UNKNOWN, content_str, execute_code, extract_code, infer_lang
-from ..function_utils import get_function_schema, load_basemodels_if_needed, serialize_to_str
+from autogen.oai import OpenAIWrapper
+from autogen.code_utils import DEFAULT_MODEL, UNKNOWN, content_str, execute_code, extract_code, infer_lang
+
 from .agent import Agent
-from .._pydantic import model_dump
 
 try:
     from termcolor import colored
@@ -70,7 +69,6 @@ class ConversableAgent(Agent):
         default_auto_reply: Optional[Union[str, Dict, None]] = "",
         socket=None,
         sid = None,
-        description: Optional[str] = None,
     ):
         """
         Args:
@@ -117,7 +115,6 @@ class ConversableAgent(Agent):
         # a dictionary of conversations, default value is list
         self._oai_messages = defaultdict(list)
         self._oai_system_message = [{"content": system_message, "role": "system"}]
-        self.description = description if description is not None else system_message
         self.socket=socket
         self.sid = sid
         self._is_termination_msg = (

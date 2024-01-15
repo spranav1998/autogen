@@ -16,13 +16,6 @@ class UserProxyAgent(ConversableAgent):
     To customize the initial message when a conversation starts, override `generate_init_message` method.
     """
 
-    # Default UserProxyAgent.description values, based on human_input_mode
-    DEFAULT_USER_PROXY_AGENT_DESCRIPTIONS = {
-        "ALWAYS": "An attentive HUMAN user who can answer questions about the task, and can perform tasks such as running Python code or inputting command line commands at a Linux terminal and reporting back the execution results.",
-        "TERMINATE": "A user that can run Python code or input command line commands at a Linux terminal and report back the execution results.",
-        "NEVER": "A user that can run Python code or input command line commands at a Linux terminal and report back the execution results.",
-    }
-
     def __init__(
         self,
         name: str,
@@ -78,8 +71,6 @@ class UserProxyAgent(ConversableAgent):
                 Default to false, which disables llm-based auto reply.
             system_message (str or List): system message for ChatCompletion inference.
                 Only used when llm_config is not False. Use it to reprogram the agent.
-            description (str): a short description of the agent. This description is used by other agents
-                (e.g. the GroupChatManager) to decide when to call upon this agent. (Default: system_message)
         """
         super().__init__(
             name,

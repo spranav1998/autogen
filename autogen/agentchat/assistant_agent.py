@@ -27,8 +27,6 @@ When you find an answer, verify the answer carefully. Include verifiable evidenc
 Reply "TERMINATE" in the end when everything is done.
     """
 
-    DEFAULT_DESCRIPTION = "A helpful and general-purpose AI assistant that has strong language skills, Python skills, and Linux command line skills."
-
     def __init__(
         self,
         name: str,
@@ -40,7 +38,6 @@ Reply "TERMINATE" in the end when everything is done.
         code_execution_config: Optional[Union[Dict, Literal[False]]] = False,
         socket=None,
         sid=None,
-        description: Optional[str] = None,
         **kwargs,
     ):
         """
@@ -72,9 +69,3 @@ Reply "TERMINATE" in the end when everything is done.
             sid=sid,
             **kwargs,
         )
-
-        # Update the provided description if None, and we are using the default system_message,
-        # then use the default description.
-        if description is None:
-            if system_message == self.DEFAULT_SYSTEM_MESSAGE:
-                self.description = self.DEFAULT_DESCRIPTION
